@@ -436,7 +436,7 @@ If you use `DEIM` or its methods in your work, please cite the following BibTeX 
 ```latex
 @misc{huang2024deim,
       title={DEIM: DETR with Improved Matching for Fast Convergence},
-      author={Shihua Huang, Zhichao Lu, Xiaodong Cun, Yongjun Yu, Xiao Zhou, and Xi Shen},
+      author={Shihua, Huang and Zhichao, Lu and Xiaodong, Cun and Yongjun, Yu and Xiao, Zhou and Xi, Shen},
       booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
       year={2025},
 }
