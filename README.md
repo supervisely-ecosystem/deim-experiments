@@ -25,6 +25,10 @@
         <img alt="Contact Us" src="https://img.shields.io/badge/Contact-Email-yellow">
     </a>
 </p>
+<p align="center" style="font-size: 2.0em; font-weight: bold;">
+    🎉 <strong>We’re excited to share <a href="https://intellindust-ai-lab.github.io/projects/DEIMv2/" style="color: #d9534f; text-decoration: none;">DEIMv2</a> </strong>🎉
+</p>
+
 
 <p align="center">
     DEIM is an advanced training framework designed to enhance the matching mechanism in DETRs, enabling faster convergence and improved accuracy. It serves as a robust foundation for future research and applications in the field of real-time object detection. 
@@ -74,6 +78,7 @@
  
   
 ## 🚀 Updates
+- [x] **\[2025.09.26\]** **DEIMv2** is now available with the [project page](https://intellindust-ai-lab.github.io/projects/DEIMv2/) and [release code](https://github.com/Intellindust-AI-Lab/DEIMv2). The series covers eight model sizes, from **X** down to **Atto**. For the **S, M, L, and X** variants, we leverage DINOv3 features (distilled or pretrained). **DEIMv2** achieves higher performance with fewer parameters and FLOPs.
 - [x] **\[2025.06.24\]** DEIMv2 is coming soon: our next-gen detection series, along with three ultra-light variants: Pico (1.5M), Femto (0.96M), and Atto (0.49M), all delivering SoTA performance. Atto, in particular, is tailored for mobile devices, achieving 23.8 AP on COCO at 320×320 resolution.
 - [x] **\[2025.03.12\]** The Object365 Pretrained [DEIM-D-FINE-X](https://drive.google.com/file/d/1RMNrHh3bYN0FfT5ZlWhXtQxkG23xb2xj/view?usp=drive_link) model is released, which achieves 59.5% AP after fine-tuning 24 COCO epochs.
 - [x] **\[2025.03.05\]** The Nano DEIM model is released.
