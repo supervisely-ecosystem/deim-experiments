@@ -1,0 +1,60 @@
+__include__: [
+  './dfine_hgnetv2_x_coco.yml',
+  '../base/deim.yml'
+]
+
+output_dir: ./outputs/v2
+  
+optimizer:
+  type: AdamW
+  params: 
+    - 
+      params: '^(?=.*backbone)(?!.*norm|bn).*$'
+      lr: 0.000005   
+    - 
+      params: '^(?=.*(?:encoder|decoder))(?=.*(?:norm|bn)).*$'
+      weight_decay: 0.
+
+  lr: 0.0005
+  betas: [0.9, 0.999]
+  weight_decay: 0.00025
+  
+# Increase to search for the optimal ema
+epoches: 300 # 72 + 2n
+
+## Our LR-Scheduler
+flat_epoch: 29    # 4 + epoch // 2, e.g., 40 = 4 + 72 / 2
+no_aug_epoch: 5
+
+train_dataloader: 
+  total_batch_size: 4
+  num_workers: 4
+  dataset: 
+    transforms:
+      policy:
+        epoch: [4, 29, 50]   # list 
+        ops:
+        # - {type: RandomPhotometricDistort, p: 0.8}
+        - {type: RandomZoomOut, fill: 0}
+        - {type: RandomIoUCrop, p: 0.9}
+        - {type: SanitizeBoundingBoxes, min_size: 1}
+        - {type: RandomHorizontalFlip}
+        - {type: Resize, size: [640, 640], }
+        - {type: SanitizeBoundingBoxes, min_size: 1}
+        - {type: ConvertPILImage, dtype: 'float32', scale: True}
+        - {type: ConvertBoxes, fmt: 'cxcywh', normalize: True}
+        - {type: RandomAffine, degrees: 15, translate: [0.1, 0.1], scale: [0.8, 1.2]}
+        - {type: RandomPerspective, distortion_scale: 0.3, p: 0.3}
+        - {type: ColorJitter, brightness: 0.3, contrast: 0.3, saturation: 0.3, hue: 0.1}
+        - {type: RandomErasing, p: 0.3, scale: [0.02, 0.1]}
+    img_folder: /root/data/insulator-defect-detection/project/train/img
+    ann_file: /root/data/insulator-defect-detection/fsod_coco/train_30shot_seed0.json
+
+val_dataloader:
+  dataset: 
+    img_folder: /root/data/insulator-defect-detection/project/val/img
+    ann_file: /root/data/insulator-defect-detection/fsod_coco/val_50.json
+
+  collate_fn:
+    mixup_epochs: [4, 200]
+    stop_epoch: 295

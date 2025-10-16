@@ -1,0 +1,83 @@
+Tuning checkpoint from weights/deim_dfine_hgnetv2_x_coco_50e.pth
+Load model.state_dict, {'missed': [], 'unmatched': []}
+Initial lr: [5e-07, 5e-06, 5e-06]
+building train_dataloader with batch_size=2...
+     ### Transform @Mosaic ###
+     ### Transform @RandomPhotometricDistort ###
+     ### Transform @RandomZoomOut ###
+     ### Transform @RandomIoUCrop ###
+     ### Transform @SanitizeBoundingBoxes ###
+     ### Transform @RandomHorizontalFlip ###
+     ### Transform @Resize ###
+     ### Transform @SanitizeBoundingBoxes ###
+     ### Transform @ConvertPILImage ###
+     ### Transform @ConvertBoxes ###
+     ### Mosaic with Prob.@0.5 and ZoomOut/IoUCrop existed ###
+     ### ImgTransforms Epochs: [4, 340, 570] ###
+     ### Policy_ops@['Mosaic', 'RandomPhotometricDistort', 'RandomZoomOut', 'RandomIoUCrop'] ###
+     ### Using MixUp with Prob@0.5 in [4, 29] epochs ###
+     ### Multi-scale Training until 50 epochs ###
+     ### Multi-scales@ [480, 512, 544, 576, 608, 640, 640, 640, 800, 768, 736, 704, 672] ###
+building val_dataloader with batch_size=64...
+     ### Transform @Resize ###
+     ### Transform @ConvertPILImage ###
+     ### Multi-scale Training until 570 epochs ###
+     ### Multi-scales@ None ###
+
+------------------------------------- Calculate Flops Results -------------------------------------
+Notations:
+number of parameters (Params), number of multiply-accumulate operations(MACs),
+number of floating-point operations (FLOPs), floating-point operations per second (FLOPS),
+fwd FLOPs (model forward propagation FLOPs), bwd FLOPs (model backward propagation FLOPs),
+default model backpropagation takes 2.00 times as much computation as forward propagation.
+
+Total Training Params:                                                  61.67 M
+fwd MACs:                                                               101.147 GMACs
+fwd FLOPs:                                                              202.669 GFLOPS
+fwd+bwd MACs:                                                           303.44 GMACs
+fwd+bwd FLOPs:                                                          608.007 GFLOPS
+---------------------------------------------------------------------------------------------------
+{'Model FLOPs:202.669 GFLOPS   MACs:101.147 GMACs   Params:61695555'}
+------------------------------------------Start training-------------------------------------------
+     ## Using Self-defined Scheduler-flatcosine ##
+[5e-07, 5e-06, 5e-06] [2.5e-07, 2.5e-06, 2.5e-06] 1000 2000 200 60
+number of trainable parameters: 62689686
+/root/DEIM/engine/solver/det_engine.py:104: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:835.)
+  if not math.isfinite(loss_value):
+Epoch: [0]  [0/2]  eta: 0:00:02  lr: 0.000000  loss: 57.5081 (57.5081)  loss_mal: 1.7279 (1.7279)  loss_bbox: 0.5786 (0.5786)  loss_giou: 1.5885 (1.5885)  loss_fgl: 0.5813 (0.5813)  loss_mal_aux_0: 1.1926 (1.1926)  loss_bbox_aux_0: 0.5748 (0.5748)  loss_giou_aux_0: 1.5960 (1.5960)  loss_fgl_aux_0: 0.5840 (0.5840)  loss_ddf_aux_0: 0.0274 (0.0274)  loss_mal_aux_1: 1.7831 (1.7831)  loss_bbox_aux_1: 0.5802 (0.5802)  loss_giou_aux_1: 1.5870 (1.5870)  loss_fgl_aux_1: 0.5786 (0.5786)  loss_ddf_aux_1: 0.0043 (0.0043)  loss_mal_aux_2: 1.4998 (1.4998)  loss_bbox_aux_2: 0.5764 (0.5764)  loss_giou_aux_2: 1.5829 (1.5829)  loss_fgl_aux_2: 0.5828 (0.5828)  loss_ddf_aux_2: 0.0006 (0.0006)  loss_mal_aux_3: 1.7260 (1.7260)  loss_bbox_aux_3: 0.5772 (0.5772)  loss_giou_aux_3: 1.5876 (1.5876)  loss_fgl_aux_3: 0.5801 (0.5801)  loss_ddf_aux_3: 0.0001 (0.0001)  loss_mal_aux_4: 1.7162 (1.7162)  loss_bbox_aux_4: 0.5786 (0.5786)  loss_giou_aux_4: 1.5885 (1.5885)  loss_fgl_aux_4: 0.5813 (0.5813)  loss_ddf_aux_4: 0.0000 (0.0000)  loss_mal_pre: 1.2109 (1.2109)  loss_bbox_pre: 0.5749 (0.5749)  loss_giou_pre: 1.5906 (1.5906)  loss_mal_enc_0: 1.1623 (1.1623)  loss_bbox_enc_0: 0.5844 (0.5844)  loss_giou_enc_0: 1.6246 (1.6246)  loss_mal_dn_0: 1.2453 (1.2453)  loss_bbox_dn_0: 0.3981 (0.3981)  loss_giou_dn_0: 1.0759 (1.0759)  loss_fgl_dn_0: 0.9317 (0.9317)  loss_ddf_dn_0: 0.3870 (0.3870)  loss_mal_dn_1: 1.3112 (1.3112)  loss_bbox_dn_1: 0.3087 (0.3087)  loss_giou_dn_1: 0.9322 (0.9322)  loss_fgl_dn_1: 0.8808 (0.8808)  loss_ddf_dn_1: 0.0970 (0.0970)  loss_mal_dn_2: 1.4912 (1.4912)  loss_bbox_dn_2: 0.2919 (0.2919)  loss_giou_dn_2: 0.9266 (0.9266)  loss_fgl_dn_2: 0.8809 (0.8809)  loss_ddf_dn_2: 0.0285 (0.0285)  loss_mal_dn_3: 1.4739 (1.4739)  loss_bbox_dn_3: 0.2584 (0.2584)  loss_giou_dn_3: 0.8817 (0.8817)  loss_fgl_dn_3: 0.9061 (0.9061)  loss_ddf_dn_3: 0.0011 (0.0011)  loss_mal_dn_4: 1.5020 (1.5020)  loss_bbox_dn_4: 0.2599 (0.2599)  loss_giou_dn_4: 0.8812 (0.8812)  loss_fgl_dn_4: 0.9056 (0.9056)  loss_ddf_dn_4: 0.0000 (0.0000)  loss_mal_dn_5: 1.5746 (1.5746)  loss_bbox_dn_5: 0.2599 (0.2599)  loss_giou_dn_5: 0.8812 (0.8812)  loss_fgl_dn_5: 0.9056 (0.9056)  loss_mal_dn_pre: 1.2191 (1.2191)  loss_bbox_dn_pre: 0.4156 (0.4156)  loss_giou_dn_pre: 1.0850 (1.0850)  time: 1.0343  data: 0.3300  max mem: 3100
+Epoch: [0]  [1/2]  eta: 0:00:00  lr: 0.000000  loss: 57.5081 (73.7076)  loss_mal: 1.7279 (2.5934)  loss_bbox: 0.5786 (0.7919)  loss_giou: 1.5885 (1.6402)  loss_fgl: 0.5451 (0.5632)  loss_mal_aux_0: 1.1926 (2.2220)  loss_bbox_aux_0: 0.5748 (0.8250)  loss_giou_aux_0: 1.5960 (1.6574)  loss_fgl_aux_0: 0.5840 (0.6516)  loss_ddf_aux_0: 0.0274 (0.0334)  loss_mal_aux_1: 1.7831 (2.5639)  loss_bbox_aux_1: 0.5802 (0.7894)  loss_giou_aux_1: 1.5870 (1.6412)  loss_fgl_aux_1: 0.5088 (0.5437)  loss_ddf_aux_1: 0.0043 (0.0071)  loss_mal_aux_2: 1.4998 (2.3165)  loss_bbox_aux_2: 0.5764 (0.7953)  loss_giou_aux_2: 1.5829 (1.6390)  loss_fgl_aux_2: 0.5469 (0.5649)  loss_ddf_aux_2: 0.0006 (0.0008)  loss_mal_aux_3: 1.7260 (2.5601)  loss_bbox_aux_3: 0.5772 (0.7909)  loss_giou_aux_3: 1.5876 (1.6401)  loss_fgl_aux_3: 0.5465 (0.5633)  loss_ddf_aux_3: 0.0001 (0.0001)  loss_mal_aux_4: 1.7162 (2.5818)  loss_bbox_aux_4: 0.5786 (0.7919)  loss_giou_aux_4: 1.5885 (1.6402)  loss_fgl_aux_4: 0.5451 (0.5632)  loss_ddf_aux_4: 0.0000 (0.0000)  loss_mal_pre: 1.2109 (2.2362)  loss_bbox_pre: 0.5749 (0.8194)  loss_giou_pre: 1.5906 (1.6520)  loss_mal_enc_0: 1.1623 (2.0270)  loss_bbox_enc_0: 0.5844 (0.8785)  loss_giou_enc_0: 1.6246 (1.6681)  loss_mal_dn_0: 1.2453 (1.3666)  loss_bbox_dn_0: 0.3981 (1.1923)  loss_giou_dn_0: 1.0759 (1.1121)  loss_fgl_dn_0: 0.7863 (0.8590)  loss_ddf_dn_0: 0.3870 (0.6952)  loss_mal_dn_1: 1.3112 (1.4329)  loss_bbox_dn_1: 0.3087 (1.0271)  loss_giou_dn_1: 0.9322 (0.9966)  loss_fgl_dn_1: 0.7449 (0.8128)  loss_ddf_dn_1: 0.0970 (0.1739)  loss_mal_dn_2: 1.4912 (1.6025)  loss_bbox_dn_2: 0.2919 (1.0536)  loss_giou_dn_2: 0.9266 (1.0012)  loss_fgl_dn_2: 0.7664 (0.8236)  loss_ddf_dn_2: 0.0285 (0.0574)  loss_mal_dn_3: 1.4739 (1.6891)  loss_bbox_dn_3: 0.2584 (0.9639)  loss_giou_dn_3: 0.8817 (0.9522)  loss_fgl_dn_3: 0.7771 (0.8416)  loss_ddf_dn_3: 0.0011 (0.0056)  loss_mal_dn_4: 1.5020 (1.7778)  loss_bbox_dn_4: 0.2599 (0.9699)  loss_giou_dn_4: 0.8812 (0.9532)  loss_fgl_dn_4: 0.7778 (0.8417)  loss_ddf_dn_4: 0.0000 (0.0000)  loss_mal_dn_5: 1.5746 (1.8352)  loss_bbox_dn_5: 0.2599 (0.9699)  loss_giou_dn_5: 0.8812 (0.9532)  loss_fgl_dn_5: 0.7778 (0.8417)  loss_mal_dn_pre: 1.2191 (1.3613)  loss_bbox_dn_pre: 0.4156 (1.1777)  loss_giou_dn_pre: 1.0850 (1.1139)  time: 0.6728  data: 0.1650  max mem: 6306
+Epoch: [0] Total time: 0:00:01 (0.6923 s / it)
+Averaged stats: lr: 0.000000  loss: 57.5081 (73.7076)  loss_mal: 1.7279 (2.5934)  loss_bbox: 0.5786 (0.7919)  loss_giou: 1.5885 (1.6402)  loss_fgl: 0.5451 (0.5632)  loss_mal_aux_0: 1.1926 (2.2220)  loss_bbox_aux_0: 0.5748 (0.8250)  loss_giou_aux_0: 1.5960 (1.6574)  loss_fgl_aux_0: 0.5840 (0.6516)  loss_ddf_aux_0: 0.0274 (0.0334)  loss_mal_aux_1: 1.7831 (2.5639)  loss_bbox_aux_1: 0.5802 (0.7894)  loss_giou_aux_1: 1.5870 (1.6412)  loss_fgl_aux_1: 0.5088 (0.5437)  loss_ddf_aux_1: 0.0043 (0.0071)  loss_mal_aux_2: 1.4998 (2.3165)  loss_bbox_aux_2: 0.5764 (0.7953)  loss_giou_aux_2: 1.5829 (1.6390)  loss_fgl_aux_2: 0.5469 (0.5649)  loss_ddf_aux_2: 0.0006 (0.0008)  loss_mal_aux_3: 1.7260 (2.5601)  loss_bbox_aux_3: 0.5772 (0.7909)  loss_giou_aux_3: 1.5876 (1.6401)  loss_fgl_aux_3: 0.5465 (0.5633)  loss_ddf_aux_3: 0.0001 (0.0001)  loss_mal_aux_4: 1.7162 (2.5818)  loss_bbox_aux_4: 0.5786 (0.7919)  loss_giou_aux_4: 1.5885 (1.6402)  loss_fgl_aux_4: 0.5451 (0.5632)  loss_ddf_aux_4: 0.0000 (0.0000)  loss_mal_pre: 1.2109 (2.2362)  loss_bbox_pre: 0.5749 (0.8194)  loss_giou_pre: 1.5906 (1.6520)  loss_mal_enc_0: 1.1623 (2.0270)  loss_bbox_enc_0: 0.5844 (0.8785)  loss_giou_enc_0: 1.6246 (1.6681)  loss_mal_dn_0: 1.2453 (1.3666)  loss_bbox_dn_0: 0.3981 (1.1923)  loss_giou_dn_0: 1.0759 (1.1121)  loss_fgl_dn_0: 0.7863 (0.8590)  loss_ddf_dn_0: 0.3870 (0.6952)  loss_mal_dn_1: 1.3112 (1.4329)  loss_bbox_dn_1: 0.3087 (1.0271)  loss_giou_dn_1: 0.9322 (0.9966)  loss_fgl_dn_1: 0.7449 (0.8128)  loss_ddf_dn_1: 0.0970 (0.1739)  loss_mal_dn_2: 1.4912 (1.6025)  loss_bbox_dn_2: 0.2919 (1.0536)  loss_giou_dn_2: 0.9266 (1.0012)  loss_fgl_dn_2: 0.7664 (0.8236)  loss_ddf_dn_2: 0.0285 (0.0574)  loss_mal_dn_3: 1.4739 (1.6891)  loss_bbox_dn_3: 0.2584 (0.9639)  loss_giou_dn_3: 0.8817 (0.9522)  loss_fgl_dn_3: 0.7771 (0.8416)  loss_ddf_dn_3: 0.0011 (0.0056)  loss_mal_dn_4: 1.5020 (1.7778)  loss_bbox_dn_4: 0.2599 (0.9699)  loss_giou_dn_4: 0.8812 (0.9532)  loss_fgl_dn_4: 0.7778 (0.8417)  loss_ddf_dn_4: 0.0000 (0.0000)  loss_mal_dn_5: 1.5746 (1.8352)  loss_bbox_dn_5: 0.2599 (0.9699)  loss_giou_dn_5: 0.8812 (0.9532)  loss_fgl_dn_5: 0.7778 (0.8417)  loss_mal_dn_pre: 1.2191 (1.3613)  loss_bbox_dn_pre: 0.4156 (1.1777)  loss_giou_dn_pre: 1.0850 (1.1139)
+Traceback (most recent call last):
+  File "/root/DEIM/train.py", line 102, in <module>
+    main(args)
+  File "/root/DEIM/train.py", line 72, in main
+    solver.fit()
+  File "/root/DEIM/engine/solver/det_solver.py", line 130, in fit
+    test_stats, coco_evaluator = evaluate(
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+  File "/root/DEIM/engine/solver/det_engine.py", line 140, in evaluate
+    for samples, targets in metric_logger.log_every(data_loader, 10, header):
+  File "/root/DEIM/engine/misc/logger.py", line 215, in log_every
+    for obj in iterable:
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py", line 734, in __next__
+    data = self._next_data()
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py", line 1516, in _next_data
+    return self._process_data(data, worker_id)
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/dataloader.py", line 1551, in _process_data
+    data.reraise()
+  File "/usr/local/lib/python3.10/dist-packages/torch/_utils.py", line 769, in reraise
+    raise exception
+IndexError: Caught IndexError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/usr/local/lib/python3.10/dist-packages/torch/utils/data/_utils/fetch.py", line 55, in fetch
+    return self.collate_fn(data)
+  File "/root/DEIM/engine/data/dataloader.py", line 185, in __call__
+    images, targets = self.apply_mixup(images, targets)
+  File "/root/DEIM/engine/data/dataloader.py", line 136, in apply_mixup
+    if self.epoch == self.mixup_epochs[-1] and self.print_info_flag:
+IndexError: list index out of range

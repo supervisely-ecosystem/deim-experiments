@@ -1,0 +1,46 @@
+__include__: [
+  './dfine_hgnetv2_x_coco.yml',
+  '../base/deim.yml'
+]
+
+output_dir: ./outputs/v2
+  
+optimizer:
+  type: AdamW
+  params: 
+    - 
+      params: '^(?=.*backbone)(?!.*norm|bn).*$'
+      lr: 0.000005   
+    - 
+      params: '^(?=.*(?:encoder|decoder))(?=.*(?:norm|bn)).*$'
+      weight_decay: 0.
+
+  lr: 0.0005
+  betas: [0.9, 0.999]
+  weight_decay: 0.00025
+  
+# Increase to search for the optimal ema
+epoches: 300 # 72 + 2n
+
+## Our LR-Scheduler
+flat_epoch: 29    # 4 + epoch // 2, e.g., 40 = 4 + 72 / 2
+no_aug_epoch: 5
+
+train_dataloader: 
+  total_batch_size: 4
+  num_workers: 4
+  dataset: 
+    transforms:
+      policy:
+        epoch: [4, 29, 50]   # list 
+    img_folder: /root/data/insulator-defect-detection/project/train/img
+    ann_file: /root/data/insulator-defect-detection/fsod_coco/train_30shot_seed0.json
+
+val_dataloader:
+  dataset: 
+    img_folder: /root/data/insulator-defect-detection/project/val/img
+    ann_file: /root/data/insulator-defect-detection/fsod_coco/val.json
+
+  collate_fn:
+    mixup_epochs: [4, 200]
+    stop_epoch: 295

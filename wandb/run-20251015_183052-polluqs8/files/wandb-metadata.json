@@ -1,0 +1,46 @@
+{
+  "os": "Linux-6.8.0-78-generic-x86_64-with-glibc2.35",
+  "python": "CPython 3.10.12",
+  "startedAt": "2025-10-15T18:30:52.904670Z",
+  "args": [
+    "-c",
+    "configs/deim_dfine/deim_hgnetv2_x_coco_5shot_v2.yml",
+    "-t",
+    "weights/deim_dfine_hgnetv2_x_coco_50e.pth"
+  ],
+  "program": "/root/DEIM/train.py",
+  "codePath": "train.py",
+  "codePathLocal": "train.py",
+  "git": {
+    "remote": "https://github.com/Intellindust-AI-Lab/DEIM",
+    "commit": "8f28fe63cca4bd2a0f4abaf9b0814b69d5abb658"
+  },
+  "email": "bragin1703@gmail.com",
+  "root": "/root/DEIM",
+  "host": "cc383fd63add",
+  "executable": "/usr/bin/python",
+  "cpu_count": 16,
+  "cpu_count_logical": 32,
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "1965172678656",
+      "used": "1440018628608"
+    }
+  },
+  "memory": {
+    "total": "134986223616"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 5090",
+      "memoryTotal": "34190917632",
+      "cudaCores": 21760,
+      "architecture": "Blackwell",
+      "uuid": "GPU-72253c0e-957c-2323-3ebc-6b878ac9c1ad"
+    }
+  ],
+  "cudaVersion": "12.9",
+  "writerId": "pwh5uestwtc3cr3dibjixhw4w5sobojg"
+}

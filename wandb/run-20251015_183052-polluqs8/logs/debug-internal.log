@@ -1,0 +1,19 @@
+{"time":"2025-10-15T18:30:53.128809863Z","level":"INFO","msg":"stream: starting","core version":"0.22.2"}
+{"time":"2025-10-15T18:30:53.420906626Z","level":"INFO","msg":"stream: created new stream","id":"polluqs8"}
+{"time":"2025-10-15T18:30:53.420986815Z","level":"INFO","msg":"handler: started","stream_id":"polluqs8"}
+{"time":"2025-10-15T18:30:53.421147784Z","level":"INFO","msg":"stream: started","id":"polluqs8"}
+{"time":"2025-10-15T18:30:53.421208554Z","level":"INFO","msg":"writer: started","stream_id":"polluqs8"}
+{"time":"2025-10-15T18:30:53.421239584Z","level":"INFO","msg":"sender: started","stream_id":"polluqs8"}
+{"time":"2025-10-15T18:45:49.657102837Z","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":5788}
+{"time":"2025-10-15T18:45:49.799305952Z","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":12}
+{"time":"2025-10-15T18:46:49.694020373Z","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":6340}
+{"time":"2025-10-15T18:46:50.002702684Z","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":12}
+{"time":"2025-10-15T18:47:34.826516556Z","level":"INFO","msg":"flowcontrol: backed up, offloading to disk","recordNumber":6746}
+{"time":"2025-10-15T18:47:34.88871292Z","level":"INFO","msg":"flowcontrol: unblocked","totalOffloaded":16}
+{"time":"2025-10-15T19:00:09.372459797Z","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/bragin1703-/deim_training/polluqs8/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-10-15T19:13:23.992986292Z","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run metadata","runtime_seconds":0.000887055}],"total_operations":1}}
+{"time":"2025-10-15T19:13:25.293095009Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-10-15T19:13:25.562227392Z","level":"INFO","msg":"stream: closing","id":"polluqs8"}
+{"time":"2025-10-15T19:13:25.562248002Z","level":"INFO","msg":"handler: closed","stream_id":"polluqs8"}
+{"time":"2025-10-15T19:13:25.562335961Z","level":"INFO","msg":"sender: closed","stream_id":"polluqs8"}
+{"time":"2025-10-15T19:13:25.562347251Z","level":"INFO","msg":"stream: closed","id":"polluqs8"}

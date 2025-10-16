@@ -9,6 +9,7 @@ Copyright (c) 2024 D-FINE authors. All Rights Reserved.
 import time
 import json
 import datetime
+import wandb
 
 import torch
 
@@ -28,6 +29,20 @@ class DetSolver(BaseSolver):
         n_parameters, model_stats = stats(self.cfg)
         print(model_stats)
         print("-"*42 + "Start training" + "-"*43)
+        if dist_utils.is_main_process():
+            wandb.run = wandb.run or wandb.init(
+                project="deim_training",
+                name=f"exp_{os.path.basename(str(self.output_dir))}",
+                config={
+                    "lr": self.optimizer.param_groups[0]["lr"],
+                    "epochs": args.epoches,
+                    "batch_size": self.train_dataloader.batch_size,
+                    "scheduler": str(args.lrsheduler),
+                    "model": args.model if hasattr(args, "model") else "unknown",
+                },
+                reinit=True
+            )
+
 
         self.self_lr_scheduler = False
         if args.lrsheduler is not None:
@@ -89,6 +104,13 @@ class DetSolver(BaseSolver):
                 lr_warmup_scheduler=self.lr_warmup_scheduler,
                 writer=self.writer
             )
+            
+            if dist_utils.is_main_process():
+                wandb.log({
+                    "epoch": epoch,
+                    **{f"train/{k}": v for k, v in train_stats.items()},
+                    "lr": self.optimizer.param_groups[0]["lr"],
+                })
 
             if not self.self_lr_scheduler:  # update by epoch 
                 if self.lr_warmup_scheduler is None or self.lr_warmup_scheduler.finished():
@@ -113,6 +135,12 @@ class DetSolver(BaseSolver):
                 self.evaluator,
                 self.device
             )
+
+            if dist_utils.is_main_process():
+                wandb.log({
+                    "epoch": epoch,
+                    **{f"val/{k}": v[0] if isinstance(v, (list, tuple)) else v for k, v in test_stats.items()}
+                })
 
             # TODO
             for k in test_stats:
@@ -180,6 +208,9 @@ class DetSolver(BaseSolver):
         total_time = time.time() - start_time
         total_time_str = str(datetime.timedelta(seconds=int(total_time)))
         print('Training time {}'.format(total_time_str))
+
+        if dist_utils.is_main_process():
+            wandb.finish()
 
 
     def val(self, ):

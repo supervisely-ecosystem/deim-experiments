@@ -5,9 +5,12 @@ Copyright (c) 2024 The DEIM Authors. All Rights Reserved.
 Modified from RT-DETR (https://github.com/lyuwenyu/RT-DETR)
 Copyright (c) 2023 lyuwenyu. All Rights Reserved.
 """
-
+# import patch_torchvision  
 import os
+# try to fix augmentation:
+# os.environ["TORCHVISION_DISABLE_TRANSFORM_V2"] = "1"
 import sys
+import wandb
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 
 import argparse
@@ -45,6 +48,21 @@ def main(args, ) -> None:
             cfg.yaml_cfg['HGNetv2']['pretrained'] = False
 
     print('cfg: ', cfg.__dict__)
+
+    experiment_name = os.path.basename(args.config).replace(".yml", "")
+
+    wandb.init(
+        project = "deim_training",
+        name = experiment_name,
+        config={
+            "config_file": args.config,
+            "device": args.device,
+            "seed": args.seed,
+            "use_amp": args.use_amp,
+            "output_dir": args.output_dir,
+        }
+    )
+
 
     solver = TASKS[cfg.yaml_cfg['task']](cfg)
 
